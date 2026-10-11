@@ -86,11 +86,11 @@
         }
         .job-photos-grid {
             display: flex;
-            width: 400%; /* 3 images wide */
-            animation: slideAnimation 12s infinite linear;
+            width: 400%; /* Updated to 400% for 4 images */
+            animation: slideAnimation 16s infinite linear;
         }
         .job-photos-grid img {
-            width: 25%;
+            width: 25%; /* Updated to 25% for each image */
             height: 300px; /* Made wider and larger */
             object-fit: cover;
             display: block;
@@ -100,11 +100,13 @@
 
         @keyframes slideAnimation {
             0% { transform: translateX(0%); }
-            30% { transform: translateX(0%); }
-            35% { transform: translateX(-33.333%); }
-            65% { transform: translateX(-33.333%); }
-            70% { transform: translateX(-66.666%); }
-            95% { transform: translateX(-66.666%); }
+            20% { transform: translateX(0%); }
+            25% { transform: translateX(-25%); }
+            45% { transform: translateX(-25%); }
+            50% { transform: translateX(-50%); }
+            70% { transform: translateX(-50%); }
+            75% { transform: translateX(-75%); }
+            95% { transform: translateX(-75%); }
             100% { transform: translateX(0%); }
         }
 
@@ -173,10 +175,10 @@
                 <div class="job-card">
                     <div class="slider-window">
                         <div class="job-photos-grid">
-                            <img src="FFB10962-A777-40BF-AEEC-8F5A0D7BD5EC.jpg" alt="Recent job photo 1">
-                            <img src="99221D7E-2631-4DBF-AAE1-6D8DF4963DF7.jpg" alt="Recent job photo 2">
-                            <img src="6E8120C5-C315-4965-947A-2E81A80586E9.jpg" alt="Recent job photo 3"> 
-                            <img src="1235673.jpg" alt="Recent job photo 4">
+                            <img src="FFB10962-A777-40BF-AEEC-8F5A0D7BD5EC.jpg" alt="Recent job photo 1"[cite: 1]>
+                            <img src="99221D7E-2631-4DBF-AAE1-6D8DF4963DF7.jpg" alt="Recent job photo 2"[cite: 1]>
+                            <img src="6E8120C5-C315-4965-947A-2E81A80586E9.jpg" alt="Recent job photo 3"[cite: 1]> 
+                            <img src="1235673.jpg" alt="Recent job photo 4"[cite: 1]>
                         </div>
                     </div>
                 </div>
@@ -186,25 +188,4 @@
         <hr style="margin: 3rem 0; border: none; border-top: 1px solid #ccc;">
 
         <section id="quote">
-            <h2>Request a Free Quote</h2>
-            <form action="https://formspree.io/f/xppqljqp" method="POST">
-                <label for="name">Name:</label>
-                <input type="text" id="name" name="name" required placeholder="Your full name">
-
-                <label for="phone">Phone Number:</label>
-                <input type="tel" id="phone" name="phone" required placeholder="(919)-346-6146">
-
-                <label for="details">Service Required:</label>
-                <textarea id="details" name="details" rows="4" placeholder="E.g. address, item/items, location on property (upstairs, garage, living room, outside)"></textarea>
-
-                <button type="submit" class="btn" style="border:none; cursor:pointer;">Submit Request</button>
-            </form>
-        </section>
-    </div>
-
-    <footer>
-        <p>&copy; 2026 Slingin Junk Removal. All rights reserved.</p>
-    </footer>
-
-</body>
-</html>
+            <h2>
