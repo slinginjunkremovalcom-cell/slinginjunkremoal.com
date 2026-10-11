@@ -72,19 +72,42 @@
             box-shadow: 0 2px 5px rgba(0,0,0,0.1);
             grid-column: 1 / -1;
             padding: 1rem;
+            display: flex;
+            flex-direction: column;
+            align-items: center;
+        }
+        
+        /* Slider styles for wider, slowly sliding pictures */
+        .slider-window {
+            width: 100%;
+            max-width: 650px;
+            overflow: hidden;
+            border-radius: 6px;
         }
         .job-photos-grid {
-            display: grid;
-            grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
-            gap: 1rem;
+            display: flex;
+            width: 300%; /* 3 images wide */
+            animation: slideAnimation 12s infinite linear;
         }
         .job-photos-grid img {
-            width: 100%;
-            height: 220px;
+            width: 33.333%;
+            height: 300px; /* Made wider and larger */
             object-fit: cover;
             display: block;
             border-radius: 6px;
+            flex-shrink: 0;
         }
+
+        @keyframes slideAnimation {
+            0% { transform: translateX(0%); }
+            30% { transform: translateX(0%); }
+            35% { transform: translateX(-33.333%); }
+            65% { transform: translateX(-33.333%); }
+            70% { transform: translateX(-66.666%); }
+            95% { transform: translateX(-66.666%); }
+            100% { transform: translateX(0%); }
+        }
+
         form input, form textarea {
             width: 100%;
             padding: 0.8rem;
@@ -135,6 +158,10 @@
                 <h3>Yard & Debris Waste</h3>
                 <p>Branches, brush, fencing, and construction waste disposal.</p>
             </div>
+            <div class="card">
+                <h3>Light Demolition</h3>
+                <p>Safe teardown and removal of sheds, decks, fences, and small structures.</p>
+            </div>
         </div>
 
         <hr style="margin: 3rem 0; border: none; border-top: 1px solid #ccc;">
@@ -144,10 +171,12 @@
             <h2>Jobs</h2>
             <div class="jobs-grid">
                 <div class="job-card">
-                    <div class="job-photos-grid" id="jobPhotosContainer">
-                        <img src="FFB10962-A777-40BF-AEEC-8F5A0D7BD5EC.jpg" alt="Recent job photo 1">
-                        <img src="99221D7E-2631-4DBF-AAE1-6D8DF4963DF7.jpg" alt="Recent job photo 2">
-                        <img src="6E8120C5-C315-4965-947A-2E81A80586E9.jpg" alt="Recent job photo 3">
+                    <div class="slider-window">
+                        <div class="job-photos-grid">
+                            <img src="FFB10962-A777-40BF-AEEC-8F5A0D7BD5EC.jpg" alt="Recent job photo 1">
+                            <img src="99221D7E-2631-4DBF-AAE1-6D8DF4963DF7.jpg" alt="Recent job photo 2">
+                            <img src="6E8120C5-C315-4965-947A-2E81A80586E9.jpg" alt="Recent job photo 3">
+                        </div>
                     </div>
                 </div>
             </div>
@@ -157,7 +186,6 @@
 
         <section id="quote">
             <h2>Request a Free Quote</h2>
-            <!-- Replace YOUR_FORM_ID with your form endpoint from formspree.io -->
             <form action="https://formspree.io/f/xppqljqp" method="POST">
                 <label for="name">Name:</label>
                 <input type="text" id="name" name="name" required placeholder="Your full name">
@@ -165,8 +193,8 @@
                 <label for="phone">Phone Number:</label>
                 <input type="tel" id="phone" name="phone" required placeholder="(919)-346-6146">
 
-                <label for="details">service required:</label>
-                <textarea id="details" name="details" rows="4" placeholder="E.x.address,item/items,locatiation on property(upstairs,garge,living room,outside)"></textarea>
+                <label for="details">Service Required:</label>
+                <textarea id="details" name="details" rows="4" placeholder="E.g. address, item/items, location on property (upstairs, garage, living room, outside)"></textarea>
 
                 <button type="submit" class="btn" style="border:none; cursor:pointer;">Submit Request</button>
             </form>
@@ -177,23 +205,5 @@
         <p>&copy; 2026 Slingin Junk Removal. All rights reserved.</p>
     </footer>
 
-    <!-- JavaScript to rotate photos in order -->
-    <script>
-        const container = document.getElementById('jobPhotosContainer');
-        if (container) {
-            const images = Array.from(container.children);
-            // Pick a random starting index (0, 1, or 2)
-            const randomIndex = Math.floor(Math.random() * images.length);
-            
-            // Re-order images maintaining sequence (e.g., if index 1, order becomes 2, 3, 1)
-            const rotatedImages = [
-                ...images.slice(randomIndex),
-                ...images.slice(0, randomIndex)
-            ];
-            
-            // Re-append them in the new rotated order
-            rotatedImages.forEach(img => container.appendChild(img));
-        }
-    </script>
 </body>
 </html>
